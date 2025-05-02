@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useStudy } from '../../context/StudyContext';
+import { useNavigate } from 'react-router-dom';
 
 const HistoryNotes = () => {
   const { notes } = useStudy();
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const navigate = useNavigate();
   
   // Sort notes by date (newest first)
   const sortedNotes = [...notes].sort((a, b) => 
@@ -36,6 +38,10 @@ const HistoryNotes = () => {
     });
   };
 
+  const handleAddClick = () => {
+    navigate('/upload-pdf');
+  };
+
   return (
     <div className="card">
       <div className="flex justify-between items-center mb-4">
@@ -52,8 +58,15 @@ const HistoryNotes = () => {
       </div>
       
       {Object.keys(groupedNotes).length === 0 ? (
-        <div className="text-center text-light py-8">
-          No notes found
+        <div className="text-center py-8">
+          <p className="text-light mb-4">No notes found</p>
+          <button
+            className="btn btn-primary"
+            onClick={handleAddClick}
+          >
+            <i className="fas fa-plus mr-1"></i>
+            Create a new note (Upload PDF)
+          </button>
         </div>
       ) : (
         Object.entries(groupedNotes).map(([monthYear, monthNotes]) => (
