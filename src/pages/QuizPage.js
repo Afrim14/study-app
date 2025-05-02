@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navigation from '../components/common/Navigation';
 import QuizGenerator from '../components/Quiz/QuizGenerator';
 import QuizQuestion from '../components/Quiz/QuizQuestion';
+import { useLocation } from 'react-router-dom';
 
 const QuizPage = () => {
   const [quizStarted, setQuizStarted] = useState(false);
@@ -9,6 +10,9 @@ const QuizPage = () => {
   const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState([]);
   const [quizFinished, setQuizFinished] = useState(false);
+
+  const location = useLocation();
+  const noteContentForQuiz = location.state?.noteContent || null;
 
   const handleStartQuiz = (generatedQuestions) => {
     console.log('handleStartQuiz received:', generatedQuestions);
@@ -59,7 +63,10 @@ const QuizPage = () => {
       {!quizStarted ? (
         <>
           <h1 className="page-title">Quiz Generation</h1>
-          <QuizGenerator onStartQuiz={handleStartQuiz} />
+          <QuizGenerator
+            onStartQuiz={handleStartQuiz}
+            noteContent={noteContentForQuiz}
+          />
         </>
       ) : quizFinished ? (
         <div className="flex flex-col gap-4">

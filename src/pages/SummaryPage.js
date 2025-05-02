@@ -91,7 +91,7 @@ const SummaryPage = () => {
       <div className="mt-6 text-center">
         <button 
           className="btn btn-primary"
-          onClick={() => navigate('/quiz')}
+          onClick={() => navigate('/quiz', { state: { noteContent: noteContent } })}
         >
           <i className="fas fa-question-circle mr-2"></i>
           Go to Quiz

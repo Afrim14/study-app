@@ -34,6 +34,12 @@ exports.handler = async (event) => {
 
   const { numQuestions = 5, level = 'intermediate', instructions = '', content = null } = settings;
 
+  // *** ADD LOGGING HERE TO VERIFY content ***
+  console.log('--- generate-quiz function invoked ---');
+  console.log('Received settings:', settings); // Log the entire settings object
+  console.log('Received content:', content ? `Content received (length: ${content.length})` : 'No content received');
+  console.log('-------------------------------------');
+
   // --- Construct the Prompt ---
   let promptContent = `Generate ${numQuestions} quiz questions suitable for an ${level} level learner.`;
   if (content) {

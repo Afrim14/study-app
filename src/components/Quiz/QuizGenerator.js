@@ -40,8 +40,11 @@ const QuizGenerator = ({ onStartQuiz }) => {
       numQuestions: parseInt(settings.questionCount, 10),
       level: settings.difficulty,
       instructions: instructions,
-      // content: null // Pass note content here if needed in the future
+      content: noteContent // Pass note content here if needed in the future
     };
+
+    // *** ADD LOGGING HERE ***
+    console.log('[QuizGenerator] Sending body to /api/generate-quiz:', body);
 
     try {
       const response = await fetch('/api/generate-quiz', {
