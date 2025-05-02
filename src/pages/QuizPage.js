@@ -10,42 +10,14 @@ const QuizPage = () => {
   const [answers, setAnswers] = useState([]);
   const [quizFinished, setQuizFinished] = useState(false);
 
-  const handleStartQuiz = () => {
-    // Generate questions based on settings
-    // In a real app, this would fetch from an API or generate algorithmically
-    const generatedQuestions = [
-      {
-        id: '1',
-        question: 'How many patterns in the concept?',
-        options: ['23', '21', '55', 'N/A'],
-        correctAnswer: '21'
-      },
-      {
-        id: '2',
-        question: 'Which property allows CSS to create smooth transitions?',
-        options: ['animation', 'transition', 'transform', 'opacity'],
-        correctAnswer: 'transition'
-      },
-      {
-        id: '3',
-        question: 'What is the capital of France?',
-        options: ['London', 'Berlin', 'Paris', 'Madrid'],
-        correctAnswer: 'Paris'
-      },
-      {
-        id: '4',
-        question: 'Which of these is not a JavaScript framework?',
-        options: ['React', 'Angular', 'Vue', 'Java'],
-        correctAnswer: 'Java'
-      },
-      {
-        id: '5',
-        question: 'How many degrees are in a right angle?',
-        options: ['45', '90', '180', '360'],
-        correctAnswer: '90'
-      }
-    ];
-    
+  const handleStartQuiz = (generatedQuestions) => {
+    console.log('handleStartQuiz received:', generatedQuestions);
+
+    if (!Array.isArray(generatedQuestions) || generatedQuestions.length === 0) {
+      console.error("Received invalid or empty questions array in handleStartQuiz");
+      return;
+    }
+
     setQuestions(generatedQuestions);
     setQuizStarted(true);
     setCurrentQuestion(0);
