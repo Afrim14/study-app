@@ -9,7 +9,7 @@ import LecturesPage from './pages/LecturesPage';
 import QuizPage from './pages/QuizPage';
 import FocusModePage from './pages/FocusModePage';
 import AdminPage from './pages/AdminPage';
-
+import SummaryPage from './pages/SummaryPage';
 function App() {
   return (
     <div className="app">
@@ -20,6 +20,7 @@ function App() {
         <Route path="/quiz" element={<QuizPage />} />
         <Route path="/focus" element={<FocusModePage />} />
         <Route path="/admin" element={<AdminPage />} />
+        <Route path="/summary" element={<SummaryPage />} />
       </Routes>
     </div>
   );

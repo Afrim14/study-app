@@ -58,7 +58,7 @@ const LectureView = ({ lecture, onBack }) => {
             </button>
             <button className="text-primary text-sm flex items-center text-left">
               <i className="fas fa-video mr-2"></i>
-              Supplementary Video: "The Human Journey"
+              Supplementary Video: &quot;The Human Journey&quot;
             </button>
           </div>
         </div>

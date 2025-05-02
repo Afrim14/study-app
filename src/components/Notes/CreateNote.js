@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useStudy } from '../../context/StudyContext';
+import { useNavigate } from 'react-router-dom';
 
 const CreateNote = ({ onClose, editNote }) => {
   const { subjects, addNote, updateNote } = useStudy();
+  const navigate = useNavigate();
   const [note, setNote] = useState({
     title: '',
     content: '',
@@ -46,6 +48,12 @@ const CreateNote = ({ onClose, editNote }) => {
       ...note,
       tags: note.tags.filter(tag => tag !== tagToRemove)
     });
+  };
+
+  const handleGenerateSummary = () => {
+    if (note.content.trim()) {
+      navigate('/summary', { state: { noteContent: note.content } });
+    }
   };
 
   return (
@@ -133,6 +141,18 @@ const CreateNote = ({ onClose, editNote }) => {
             onChange={(e) => setNote({...note, content: e.target.value})}
             required
           ></textarea>
+
+          <div className="mt-4">
+            <button
+              type="button"
+              className="btn btn-secondary"
+              onClick={handleGenerateSummary}
+              disabled={!note.content.trim()}
+            >
+              <i className="fas fa-wand-magic-sparkles mr-2"></i>
+              Generate Summary
+            </button>
+          </div>
         </div>
 
         <div className="flex justify-between">

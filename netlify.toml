@@ -1,0 +1,15 @@
+    [build]
+      # This command assumes your React app builds into the 'build' directory
+      command = "npm run build"
+      publish = "build"
+      # Directory where your serverless functions live
+      functions = "netlify/functions"
+
+    [functions]
+      # Ensures Node.js dependencies for functions are installed
+      node_bundler = "esbuild"
+    
+    [[redirects]]
+      from = "/api/*"
+      to = "/.netlify/functions/:splat"
+      status = 200

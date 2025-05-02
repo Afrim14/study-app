@@ -10,7 +10,7 @@ const QuizPage = () => {
   const [answers, setAnswers] = useState([]);
   const [quizFinished, setQuizFinished] = useState(false);
 
-  const handleStartQuiz = (settings) => {
+  const handleStartQuiz = () => {
     // Generate questions based on settings
     // In a real app, this would fetch from an API or generate algorithmically
     const generatedQuestions = [

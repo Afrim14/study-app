@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   // Simulate login functionality
-  const login = (email, password) => {
+  const login = (email) => {
     // In a real app, you would verify credentials with a backend
     const user = {
       id: '1',
