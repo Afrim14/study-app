@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useStudy } from '../../context/StudyContext';
+import { useNavigate } from 'react-router-dom';
 
 const QuizGenerator = ({ onStartQuiz }) => {
   const { subjects } = useStudy();
+  const navigate = useNavigate();
   const [settings, setSettings] = useState({
     subject: subjects.length > 0 ? subjects[0].id : '',
     difficulty: 'medium',
@@ -141,7 +143,7 @@ const QuizGenerator = ({ onStartQuiz }) => {
           <button
             type="button"
             className="btn btn-outline"
-            onClick={() => { /* Handle cancel, maybe navigate back or clear state */ }}
+            onClick={() => navigate('/notes')}
             disabled={isLoading}
           >
             Cancel
