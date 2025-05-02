@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useStudy } from '../../context/StudyContext';
 import { useNavigate } from 'react-router-dom';
 
-const QuizGenerator = ({ onStartQuiz }) => {
+const QuizGenerator = ({ onStartQuiz, noteContent }) => {
   const { subjects } = useStudy();
   const navigate = useNavigate();
   const [settings, setSettings] = useState({
